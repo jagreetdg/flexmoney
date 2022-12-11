@@ -11,6 +11,13 @@
 # production
 /build
 
+# backend
+/src/backend/node_modules
+/src/backend//.pnp
+/src/backend/.pnp.js
+/src/backend/coverage
+/src/backend/build
+
 # misc
 .DS_Store
 .env.local

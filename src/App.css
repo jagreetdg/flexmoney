@@ -36,3 +36,148 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #000 !important;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.rs-steps-item-icon-wrapper {
+  border-color: #b6b6b6 !important;
+  color: black !important;
+}
+
+.rs-steps-item-status-process .rs-steps-item-icon-wrapper {
+  border-color: #b6b6b6 !important;
+  background-color: white !important;
+  color: black !important;
+}
+
+.rs-steps-item-title:after {
+  border-color: black !important;
+}
+
+.rs-steps-item-status-finish .rs-steps-item-icon-wrapper {
+  border-color: #7d00be !important;
+  background-color: #7d00be !important;
+  color: white !important;
+}
+
+.browse-button {
+  height: 48px;
+  width: 158.86px;
+  border-radius: 4px;
+  background-color: #7d00be;
+}
+
+.browse-text {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.metadata-input-window {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 58px;
+  padding-right: 70px;
+  background-color: white;
+}
+
+.form-text-window {
+  box-sizing: border-box;
+  height: 48px;
+  width: 370px;
+  border: 1px solid #4d4d4d;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.form-text-window-2 {
+  box-sizing: border-box;
+  height: 40px;
+  width: 370px;
+  border: 1px solid #7d00be;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.form-align {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  align-content: left;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  background-color: grey;
+}
+
+.white-color {
+  color: transparent;
+  background-color: transparent;
+}
+
+.solo-line {
+  height: 15px;
+}
+.editError{
+  border-bottom: 1px solid #e94646;
+}
+.animated {
+  -webkit-animation-duration: 1s; 
+  animation-duration: 1s; 
+  -webkit-animation-fill-mode: both; 
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes shake {
+  0%, 100% {-webkit-transform: translateX(0);} 
+  10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-2px);} 
+  20%, 40%, 60%, 80% {-webkit-transform: translateX(2px);} 
+}
+
+@keyframes shake { 
+  0%, 100% {transform: translateX(0);} 
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-2px);} 
+  20%, 40%, 60%, 80% {transform: translateX(2px);} 
+}
+
+.shake { 
+  -webkit-animation-name: shake; 
+  animation-name: shake; 
+}
+
+.white-color {
+  color: transparent;
+  background-color: transparent;
+}
+
+.solo-line {
+  height: 15px;
+}
+
+.error-wrapper {
+  display: "flex";
+	align-content: "flex-start";
+	padding-left: "20px",
+}
+
