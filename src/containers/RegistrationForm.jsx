@@ -9,6 +9,8 @@ const CompletePayment = () => {
 	return true;
 };
 
+const registerEndpoint = `/api/register`;
+
 const RegistrationForm = (props) => {
 	const isDatePast = (datep) => {
 		return Date.parse(datep) - Date.parse(new Date()) < 0;
@@ -35,7 +37,7 @@ const RegistrationForm = (props) => {
 		console.log("Form Submit");
 		console.log(personJson);
 		try {
-      const response = await fetch(`/api/register`, {
+      const response = await fetch(registerEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: personJson,
