@@ -12,6 +12,17 @@ const CompletePayment = () => {
 const registerEndpoint = `/api/register`;
 
 const RegistrationForm = (props) => {
+
+
+	const [batch, setBatch] = useState("6-7AM");
+	const [name, setName] = useState("");
+	const [age, setAge] = useState("");
+	const [payDate, setPayDate] = useState("");
+	const [paymentStatus, setPaymentStatus] = useState(false);
+	const [validAge, setValidAge] = useState(true);
+	const [validName, setValidName] = useState(true);
+	const [validPayDate, setValidPayDate] = useState(true);
+
 	const isDatePast = (datep) => {
 		return Date.parse(datep) - Date.parse(new Date()) < 0;
   };
@@ -44,6 +55,11 @@ const RegistrationForm = (props) => {
       })
       const data = await response.json();
       if (data.success) {
+        setPayDate("");
+        setName("");
+        setBatch("6-7AM");
+        setAge("");
+        setPaymentStatus(false);
         showNotification("Submitted Successful",data.message,"success")
         console.log(data.message);
       }
@@ -56,15 +72,6 @@ const RegistrationForm = (props) => {
 			// console.log(error);
 		}
 	};
-
-	const [batch, setBatch] = useState("6-7AM");
-	const [name, setName] = useState("");
-	const [age, setAge] = useState("");
-	const [payDate, setPayDate] = useState("");
-	const [paymentStatus, setPaymentStatus] = useState(false);
-	const [validAge, setValidAge] = useState(true);
-	const [validName, setValidName] = useState(true);
-	const [validPayDate, setValidPayDate] = useState(true);
 
 	const rowGap = (
 		<Row>
