@@ -1,71 +1,25 @@
+require('dotenv').config();
+const DATABASE_URL = process.env.DATABASE_URL
+const PORT = process.env.PORT
+
 const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+const mongoose = require("mongoose");
 
 const app = express();
-const port = 4000;
 
-let db = new Map();
+mongoose.connect(DATABASE_URL);
+mongoose.Promise = global.Promise;
 
-app.use(cors());
+app.use(express.static("public"));
 
+app.use(express.json());
+app.use("/api", require("./routes/api"));
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(bodyParser.raw());
-
-app.get("/", function (req, res) {
-	res.send(db);
+app.use(function (err, req, res, next) {
+	console.log(err);
+	res.status(422).send({ error: err.message });
 });
 
-app.get("/api/register", function (req, res) {
-	res.send("Welcome to Flexmoney Yoga Registraion API");
-});
-
-app.post("/api/register", (req, res) => {
-
-	const user = req.body
-	const name = user.name
-	const age = user.age
-	const payDate = user.payDate
-	const monthYear = payDate.substring(0, 7)
-  const batch = user.batch
-
-	const response = {}
-
-  if (db.has(name)) {
-		let paymentStatus = db.get(name).paymentStatus;
-		if (paymentStatus.get(monthYear)) {
-			response.success = false;
-			response.message = "User has already paid for this month";
-		} else {
-			paymentStatus.set(monthYear, true);
-			db.set(name, {
-				age: age,
-				paymentStatus: paymentStatus,
-				batch: batch,
-			});
-			response.success = true;
-			response.message = "User has successfully paid for this month";
-		}
-	} else {
-		let paymentStatus = new Map();
-		paymentStatus.set(monthYear,true);
-		db.set(name, {
-			age: age,
-			paymentStatus: paymentStatus,
-			batch: batch,
-		});
-		response.success = true;
-		response.message = "User created & successfully paid for this month";
-	}
-  res.send(response)
-});
-
-app.listen(port, function (err) {
-	if (err) {
-		console.log("Error while starting server");
-	} else {
-		console.log("Server has been started at " + port);
-	}
+app.listen(PORT || 4000, function () {
+	console.log("Server Running on 4000");
 });
